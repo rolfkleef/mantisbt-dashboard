@@ -71,9 +71,9 @@ if( helper_get_current_project() == 0 ) {
 # -- Viewing range info --?>
 	<td class="form-title" colspan="2">
 <?php
-print_link( 'view_all_set.php?type=1&temporary=y&source_query_id=' . $t_box_id, $t_box_title, false, 'subtle' );
+print_link( 'view_all_set.php?type=3&source_query_id=' . $t_box_id, $t_box_title, false, 'subtle' );
 echo '&#160;';
-print_bracket_link( 'view_all_set.php?type=1&temporary=y&source_query_id=' . $t_box_id, '^', true, 'subtle' );
+print_bracket_link( 'view_all_set.php?type=3&source_query_id=' . $t_box_id, '^', true, 'subtle' );
 
 if( count( $rows ) > 0 ) {
 	$v_start = $t_filter[FILTER_PROPERTY_ISSUES_PER_PAGE] * ( $f_page_number - 1 ) + 1;
