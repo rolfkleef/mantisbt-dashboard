@@ -1,0 +1,50 @@
+h1. Dashboard Plugin for the Mantis bug tracker
+
+The "Dashboard" page is derived from the existing My View page, using a matrix of boxes to provide a quick overview of bugs. It is intended as a replacement, giving you more flexibility in defining what you want to see.
+
+* The content of the boxes is determined by saved filters.
+* The number of boxes per row is configurable.
+* The order of boxes is configurable.
+* Overdue issues use the "overdue" style to draw more attention.  
+* The layout of issues is slightly different, to minimise visual clutter.
+
+If you have a large screen (for instance: a 1920x1080 full HD screen), you can easily fit 4 boxes on a row, and cover far more information at a glance.
+
+Boxes are always shown, even if they don't contain bugs, to keep them in the same place at all times.
+
+If you click on the title of a box, you will be redirected to the view page with the filter used for that box, set as temporary filter.
+
+h2. Installation
+
+# Download the files and place them in the directory plugins/Dashboard of your Mantis installation.
+# With administrator privileges, go to the page Manage -> Manage Plugins
+# In the list "Available Plugins", you should see "Dashboard 0.1": click the install link for the plugin.
+
+h2. Configuration
+
+You need administrator level access to manage the configuration, and there only is a single configuration for all users.
+
+# After installation, the plugin should appear in the "Installed Plugins" list: click on the name to manage the configuration.
+# The first item is the number of boxes you want per row. You can also reset it to the default of 4.
+# Next is a list of all known filters, sorted alphabetically. The number in front of each filter determines the order in which they will be shown. "0" means it will not be shown.
+# You can also reset the definition of boxes: in that case, all known filters will have a box on your dashboard.
+# After submitting the settings, you will be redirected to the Dashboard page.
+
+Caution:
+
+* There is no "undo": if you reset your boxes configuration or edit it, there is no way to return to the previous version.
+* You can delete filters in Mantis, but there is no way to edit filters. You can use an existing filter, then adapt the search and sort criteria, and then save it under a different name. You'll need to change the plugin configuration to then use the new filter in a box.
+* If you delete a filter that is used on the Dashboard page, it will simply not show anymore, but all boxes after it will move up one position.
+* Filter names do not support translation, so the titles of the boxes cannot be localised.
+
+h2. Status and future work
+
+The current status is "works for me". We use it, and hacked Mantis to not show the My View menu item anymore.
+
+Possible future improvements:
+
+* Clean up code and layout.
+* Provide more configuration options (edit, attachment, read-only icons, format of issue)
+* Add a plugin to edit existing filters.
+* Enable per-user, per-role and/or per-project configuration.
+* Add fancy jquery drag&drop to the configuration page.

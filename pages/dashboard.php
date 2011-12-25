@@ -35,7 +35,7 @@
 	html_page_top1( plugin_lang_get( 'title' ) );
 
 	if ( current_user_get_pref( 'refresh_delay' ) > 0 ) {
-		html_meta_redirect( plugin_page( 'dashboard'), current_user_get_pref( 'refresh_delay' )*60 );
+		html_meta_redirect( plugin_page( 'dashboard', true), current_user_get_pref( 'refresh_delay' )*60 );
 	}
 
 	html_page_top2();
