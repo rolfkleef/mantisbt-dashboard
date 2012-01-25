@@ -48,6 +48,9 @@ $t_icon_path = config_get( 'icon_path' );
 $t_filter = filter_deserialize( filter_db_get_filter ($t_box_id ) );
 $rows = filter_get_bug_rows( $f_page_number, $t_per_page, $t_page_count, $t_bug_count, $t_filter );
 
+$t_fields = config_get( 'bug_view_page_fields' );
+$t_fields = columns_filter_disabled( $t_fields );
+
 # Improve performance by caching category data in one pass
 if( helper_get_current_project() == 0 ) {
 	$t_categories = array();
@@ -97,6 +100,13 @@ echo "($v_start - $v_end / $t_bug_count)";
 	$t_summary = string_display_line_links( $t_bug->summary );
 	$t_last_updated = date( config_get( 'normal_date_format' ), $t_bug->last_updated );
 
+	$t_bug_due_date = $t_bug->__get( 'due_date' );
+	if ( !date_is_null( $t_bug_due_date ) ) {
+		$t_bug_due_date = date( config_get( 'normal_date_format' ), $t_bug_due_date );
+	} else {
+		$t_bug_due_date = '';
+	}
+
 	# choose color based on status
 	$status_color = get_status_color( $t_bug->status );
 
@@ -125,17 +135,24 @@ echo "($v_start - $v_end / $t_bug_count)";
 	</td>
 
 	<?php
+	$t_show_due_date = in_array( 'due_date', $t_fields ) && access_has_bug_level( config_get( 'due_date_view_threshold' ), $t_bug->id );
+
 	if ( bug_is_overdue( $t_bug->id ) ) {
 		$t_overdue = ' overdue';
 	} else {
 		$t_overdue = '';
 	}
+
 	# -- Summary --?>
 	<td class="left<?php echo $t_overdue ?>" valign="top" width="100%">
 		<span class="small">
 		<?php
 			echo $t_summary;
-	?>
+
+			if ( $t_show_due_date ) {
+				echo ': ' . $t_bug_due_date;
+			}
+		?>
 		<br />
 		<?php
 		 	if( ON == config_get( 'show_bug_project_links' ) && helper_get_current_project() != $t_bug->project_id ) {
