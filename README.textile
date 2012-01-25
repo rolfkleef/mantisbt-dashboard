@@ -16,15 +16,15 @@ If you click on the title of a box, you will be redirected to the view page with
 
 h2. Installation
 
-# Download the files and place them in the directory plugins/Dashboard of your Mantis installation.
-# With administrator privileges, go to the page Manage -> Manage Plugins
-# In the list "Available Plugins", you should see "Dashboard 0.1": click the install link for the plugin.
+# Download the files and place them in the directory @plugins/Dashboard@ of your Mantis installation.
+# With administrator privileges, go to the page "Manage" -> "Manage Plugins"
+# In the list "_Available Plugins_", you should see "_Dashboard 0.1_": click the install link for the plugin.
 
 h2. Configuration
 
 You need administrator level access to manage the configuration, and there only is a single configuration for all users.
 
-# After installation, the plugin should appear in the "Installed Plugins" list: click on the name to manage the configuration.
+# After installation, the plugin should appear in the "_Installed Plugins_" list: click on the name to manage the configuration.
 # The first item is the number of boxes you want per row. You can also reset it to the default of 4.
 # Next is a list of all known filters, sorted alphabetically. The number in front of each filter determines the order in which they will be shown. "0" means it will not be shown.
 # You can also reset the definition of boxes: in that case, all known filters will have a box on your dashboard.
